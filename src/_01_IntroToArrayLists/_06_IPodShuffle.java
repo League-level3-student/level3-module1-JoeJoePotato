@@ -1,16 +1,36 @@
 package _01_IntroToArrayLists;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 //Copyright The League of Amazing Programmers, 2015
 
-public class _06_IPodShuffle{
+public class _06_IPodShuffle implements MouseListener {
+	ArrayList<Song> songs = new ArrayList<Song>();
+	JFrame frame = new JFrame();
+	JPanel panel = new JPanel();
+	JButton listen = new JButton();
+	JButton add = new JButton();
+
 	public _06_IPodShuffle() {
-		// 1. Use the Song class the play the demo.mp3 file.
-				
-				
+				// 1. Use the Song class the play the demo.mp3 file.
+
+		frame.add(panel);
+		panel.add(listen);
+		panel.add(add);
+		add.setText("add a song");
+		listen.setText("listen to a random song");
+		add.addMouseListener(this);
+frame.setVisible(true);
+
+
 		/**
 		 * 2. Congratulations on completing the sound check! * Now we want to make an
 		 * iPod Shuffle that plays random music. * Create an ArrayList of Songs and a
@@ -18,10 +38,48 @@ public class _06_IPodShuffle{
 		 * you're really cool, you can stop all the songs, before playing a new one on
 		 * subsequent button clicks.
 		 */
-		
+
 	}
-	
+
 	public static void main(String[] args) {
 		new _06_IPodShuffle();
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		JButton j = (JButton) e.getSource();
+		if (j == add) {
+String name=JOptionPane.showInputDialog("enter the name of the song");
+		Song s=new Song(name);
+		songs.add(s);
+		}else {
+			Random r=new Random();
+			songs.get(r.nextInt(songs.size())).play();
+		}
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+
 	}
 }

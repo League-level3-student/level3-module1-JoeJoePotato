@@ -13,11 +13,24 @@ public class _05_LongChipCompetition {
 	 * initialize The Beatles before you start your search. *
 	 **/
 	private ArrayList<Beatle> theBeatles = new ArrayList<Beatle>();
-
 	public static void main(String[] args) {
 		_05_LongChipCompetition lcc = new _05_LongChipCompetition();
-		
+lcc.initializeBeatles();		
+ ArrayList<Beatle> peeps =lcc.getTheBand();
+double biggest=0;
+String owner="no one";
+ for (int i = 0; i < peeps.size(); i++) {
+	Beatle contender=peeps.get(i);
+for (int j = 0; j < contender.getChips().size(); j++) {
+	if(contender.getChips().get(j).getLength()>biggest) {
+		biggest=contender.getChips().get(j).getLength();
+ owner=contender.getName();
 	}
+}
+}
+ System.out.println(owner+" has the longest chip, at "+biggest+" inches");
+	}
+	
 	
 	private void initializeBeatles() {
 		Beatle george = new Beatle("George");
