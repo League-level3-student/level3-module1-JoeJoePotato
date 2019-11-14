@@ -18,7 +18,7 @@ public class _06_IPodShuffle implements MouseListener {
 	JPanel panel = new JPanel();
 	JButton listen = new JButton();
 	JButton add = new JButton();
-
+Song lastsong=new Song("");
 	public _06_IPodShuffle() {
 				// 1. Use the Song class the play the demo.mp3 file.
 
@@ -28,6 +28,7 @@ public class _06_IPodShuffle implements MouseListener {
 		add.setText("add a song");
 		listen.setText("listen to a random song");
 		add.addMouseListener(this);
+		listen.addMouseListener(this);
 frame.setVisible(true);
 
 
@@ -52,10 +53,17 @@ frame.setVisible(true);
 		if (j == add) {
 String name=JOptionPane.showInputDialog("enter the name of the song");
 		Song s=new Song(name);
+	
 		songs.add(s);
-		}else {
+		
+		}
+		if(j==listen){
+			lastsong.stop();
 			Random r=new Random();
-			songs.get(r.nextInt(songs.size())).play();
+			int g=r.nextInt(songs.size());
+			Song playing=songs.get(g);
+		playing.play();
+		lastsong=playing;
 		}
 	}
 
