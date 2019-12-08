@@ -17,14 +17,14 @@ public class HangMan implements KeyListener {
 	String seen = "";
 	int completed = 0;
 	int pushes = 0;
-
+boolean crud=false;	
 	public static void main(String[] args) {
 		HangMan hm = new HangMan();
 		hm.setup();
 	}
 
 	public void setup() {
-
+lives=10;
 		fram.setVisible(true);
 		fram.add(ladel);
 		String attempts = JOptionPane.showInputDialog("How many attemps do you wish to make.");
@@ -51,7 +51,7 @@ public class HangMan implements KeyListener {
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		boolean crud=false;
+		crud=false;
 		char guess = e.getKeyChar();
 		System.out.println(guess);
 		for (int i = 0; i < answer.length(); i++) {
@@ -71,6 +71,7 @@ crud=true;
 			}
 		if(crud==false) {
 				lives--;
+				
 				if (lives <= 0) {
 					JOptionPane.showMessageDialog(null, "You hath been hanged by the English Court.");
 					setup();
