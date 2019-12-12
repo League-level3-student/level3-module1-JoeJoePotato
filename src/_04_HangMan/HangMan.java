@@ -33,6 +33,7 @@ lives=10;
 			String nextup = Utilities.readRandomLineFromFile("dictionary.txt");
 			wordstoguess.push(nextup);
 		}
+		fram.addKeyListener(this);
 		ready();
 
 	}
@@ -45,7 +46,7 @@ lives=10;
 		}
 		ladel.setText("Loading...please wait");
 		ladel.setText(seen);
-		fram.addKeyListener(this);
+		
 	}
 
 	@Override

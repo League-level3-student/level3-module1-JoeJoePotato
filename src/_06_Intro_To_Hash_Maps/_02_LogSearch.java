@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 public class _02_LogSearch implements MouseListener {
 	/*
@@ -32,11 +33,11 @@ public class _02_LogSearch implements MouseListener {
 	 *
 	 */
 	JFrame frame = new JFrame();
-	JLabel ladel = new JLabel();
-	JButton add = new JButton();
-	JButton search = new JButton();
-	JButton view = new JButton();
-	JButton remove = new JButton();
+	JPanel panel = new JPanel();
+	JButton add = new JButton("Add");
+	JButton search = new JButton("Search");
+	JButton view = new JButton("View");
+	JButton remove = new JButton("Remove");
 	HashMap<Integer, String> students = new HashMap<Integer, String>();
 
 	public static void main(String[] args) {
@@ -45,11 +46,13 @@ public class _02_LogSearch implements MouseListener {
 	}
 
 	public void setup() {
-		frame.add(ladel);
-		ladel.add(add);
-		ladel.add(remove);
-		ladel.add(search);
-		ladel.add(view);
+		frame.setVisible(true);
+		frame.add(panel);
+		panel.add(add);
+		panel.add(remove);
+		panel.add(search);
+		panel.add(view);
+		frame.pack();
 
 		add.addMouseListener(this);
 		remove.addMouseListener(this);
@@ -61,12 +64,12 @@ public class _02_LogSearch implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		String origin = (String) e.getSource();
-		if (origin.equals("add")) {
+		JButton origin =(JButton)e.getSource();
+		if (origin==add) {
 			int idnum = Integer.parseInt(JOptionPane.showInputDialog("What is the student's ID number?"));
 			String tortle = JOptionPane.showInputDialog("What is the student's name?");
 			students.put(idnum, tortle);
-		} else if (origin.equals("remove")) {
+		} else if (origin==remove) {
 			int tiefling = Integer.parseInt(JOptionPane.showInputDialog("What is the student's ID number"));
 			boolean gnome = students.containsKey(tiefling);
 			if (gnome == true) {
@@ -75,7 +78,7 @@ public class _02_LogSearch implements MouseListener {
 				JOptionPane.showInputDialog("Sorry, there is no student with that ID.");
 
 			}
-		} else if (origin.equals("search")) {
+		} else if (origin==search) {
 			int tiefling = Integer.parseInt(JOptionPane.showInputDialog("What is the student's ID number"));
 			boolean gnome = students.containsKey(tiefling);
 			if (gnome == true) {
@@ -84,8 +87,8 @@ public class _02_LogSearch implements MouseListener {
 				JOptionPane.showInputDialog("Sorry, there is no student with that ID.");
 			}
 			}else {
-				for (int i = 0; i < students.size(); i++) {
-				System.out.println("ID: "+students.get(i)+"  Name: "+students.get);	
+				for (int i = 1; i < students.size()+1; i++) {
+				System.out.println("ID: "+(i)+"  Name: "+students.get(i));	
 				}
 			}
 
